@@ -36,10 +36,29 @@ public class Main {
 
         while (stdin.hasNextLine()) {
             var curin = stdin.nextLine();
-            if (curin.equals("qp")) break;
-
+            if (curin.equals("j:q")) {
+                cleanup();
+                break;
+            } else if (curin.equals("j:e")) {
+                editup();
+                break;
+            }
             newbuf.append(curin);
         }
         newbuf.dump();
+    }
+
+    public static void cleanup() {
+        // clean up, then show back the main window;
+        // TODO: IMPLEMENT ME
+    }
+
+    // editing: cpy, paste, cut, mv, etc..
+    public static void editup() {
+        System.out.println("OPTION: 1- [cpy(from, to)],   2- [paste(in)],  3- [cut(from, to)]");
+
+
+
+
     }
 }
