@@ -1,31 +1,15 @@
 package com.mohdev.jlib.buff;
 
-import com.mohdev.jcore.JPosition;
-
-class Selection {
-    private String selected;  // SelectedText;
-
-    int begin, end;  // TODO: improve api
-
-    public Selection(int begin, int end) {
-        this.begin = begin;
-        this.end = end;
-    }
-
-    public String text() {
-        return selected;
-    }
-
-}
-
-class ClipStack {
+public class JClipBoard {
     String[] storage; // stack
     int max;
     int sp = 0;  // empty;
-    public ClipStack() {
+
+    public JClipBoard() {
         this(10);
     }
-    public ClipStack(int size) {
+
+    public JClipBoard(int size) {
         storage = new String[size];
         max = size;
     }
@@ -52,29 +36,8 @@ class ClipStack {
         return sp == 0;
     }
 
-
-}
-public class JClipBoard {
-    // TODO -- attrs
-
-
-    // The storage;
-    ClipStack clip; // [copyable, copyable, etc...]
-    // questions can be currentSize of the clipStorage;
-    // other stuff as well;
-    // We;ll temporarily keep track of the copied text;
-
-    public boolean cpy(JPosition position) {
-
-        return false;
+    public void print() {
+        var s = sp;
+        while (s-- > 0) System.out.println(storage[s]);
     }
-    public boolean cut() {
-
-        return false;
-    }
-    public boolean paste(JPosition in) {
-
-        return true;
-    }
-
 }
