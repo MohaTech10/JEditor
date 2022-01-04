@@ -2,7 +2,7 @@ package com.mohdev.jcore;
 
 // user will be provided a new file option then name
 public class JTextBuffer {
-    JBuffer content;
+    private JBuffer content;
     String name;
 
     // A buffer and its content can never die?
@@ -30,5 +30,7 @@ public class JTextBuffer {
         return false;
     }
     // etc;
+
+    public JBuffer engine() { return content; }
 
 }

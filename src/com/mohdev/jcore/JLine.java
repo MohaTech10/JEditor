@@ -29,5 +29,5 @@ public class JLine {
         return aline.length();
     }
 //    private boolean insertline() { }
-
+    public String txt() { return aline; }
 }
