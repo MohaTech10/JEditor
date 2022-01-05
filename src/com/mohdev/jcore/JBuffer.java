@@ -54,10 +54,12 @@ public class JBuffer {
         // step should be bound check; 20
         if (step > size || step < 0) { return true; }
         var current = from;
-        while (current != null && step < size) {
+        while (step-- > 0 && current != null) {
             callback.access(current);
             current = current.nxt;
         }
+
+        // TODO: if step != -1 means we didn't go all the steps, raise an out of bounds steps;, Two ways, offset, or known-line number
         return false;
     }
     public void dump() {
