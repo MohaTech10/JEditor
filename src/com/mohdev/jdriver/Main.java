@@ -72,18 +72,18 @@ public class Main {
             System.out.println("USAGE: pass in arg in brackets, eg, [1: 3].     start from 1");
             var postxt = stdin.nextLine();  // we should parse it;
             var cpypos = parsecpy(postxt);
+            if (cpypos == null) { System.err.println("syntax error: invalid position ..."); return; };
             clipper.cpy(cpypos);
         }
     }
 
     private static boolean must(char tkn, char match) {
 
-        if (tkn != match) return true;
-
-        return false;
+        return tkn != match;
     }
 
     // TODO: Later, either use lexer, or flag-based parsing
+    // null if we have syntax error
     private static JPosition parsecpy(String unparsed) {
         var i = 0;
         if (must(unparsed.charAt(i++), '[')) {
@@ -115,10 +115,12 @@ public class Main {
         }
         if (j == i) {
             System.err.println("Expect end position after `:`");
+            return null;
+
         }
 
         if (must(unparsed.charAt(j), ']')) {  // j will always point to last thing after the number so last number digit +1 and i will always point to :+1 position
-            System.err.println("Error: Expected `:`. Got " + unparsed.charAt(i) + " instead");
+            System.err.println("Error: Expected `]`. Got " + unparsed.charAt(j) + " instead");
             return null;
         }
 
